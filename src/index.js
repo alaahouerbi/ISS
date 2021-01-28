@@ -43,3 +43,12 @@ app.use(morgan("dev"));
 
 
   app.listen(3000, () => console.log('Server is up'));
+app.use('/api',require('./api/router'));  
+/* userService.emailExists('alaa').then(function (result) {
+   console.log(result);
+return result;   
+ },function (result) {
+  console.log(result);
+  console.log('non')
+return result;  } )*/
+  
