@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const jwt=require('jsonwebtoken')
 require("dotenv").config();
 
 function userService() {
@@ -12,7 +13,7 @@ function userService() {
         if (!user) {
             throw new Error("email does not exist")
         }
-        bcrypt.compare(userInput.password, user.password).then(function (result) {
+      const result=await  bcrypt.compare(userInput.password, user.password)
             if(!result) throw new Error("invalid password")
             const token = jwt.sign({
                     userId: user._id
@@ -26,7 +27,7 @@ function userService() {
                   };
                 return userObj;
             
-        })
+        
 
 
     }

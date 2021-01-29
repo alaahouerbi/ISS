@@ -12,7 +12,7 @@ router.post('/register', async (req, res, next) => {
 });
 router.post('/login',async(req,res,next)=>{
   const user=await userSerive.login(req.body);
-  if(!user) throw new Error("invalid cred")
+ 
   res.send(user);
 })
 module.exports=router;
