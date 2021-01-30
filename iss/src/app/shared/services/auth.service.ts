@@ -22,7 +22,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
   }
   login(credentials:any):Observable<User>{
-    return this.httpClient.post(endpoint,credentials).pipe(map(
+    return this.httpClient.post(endpoint+"login",credentials).pipe(map(
       (res: any) => {
         this.setAuth(res);
         return res;
@@ -50,6 +50,9 @@ export class AuthService {
     this.jwtService.deleteToken();
     this.currentUserSubject.next({} as User);
     this.auth = false;
+  }
+  register(user:User){
+    return this.httpClient.post(endpoint+"register",user);
   }
   getUserPayload() {
     if (this.jwtService.getToken()) {
