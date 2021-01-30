@@ -30,11 +30,11 @@ export class RegisterComponent implements OnInit {
     });
   }
   onSubmit(){
-    this.userModel.email=this.f.email.value;
+   /* this.userModel.email=this.f.email.value;
     this.userModel.password=this.f.password.value;
     this.userModel.firstName=this.f.firstName.value;
-    this.userModel.lastName=this.f.lastName.value;
-    this.authService.register(this.userModel).pipe(first())
+    this.userModel.lastName=this.f.lastName.value;*/
+    this.authService.register(this.registerForm.value).pipe(first())
     .subscribe(
         data => {
 

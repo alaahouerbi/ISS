@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors=require("cors");
 
 const app = express();
-
+const server = require('http').createServer(app);
 dotenv.config();
 
 // Connect to DB
@@ -14,6 +14,10 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }
+const io = require('socket.io')(server,{cors: {
+  origin: "http://localhost:4200",
+  methods: ["GET", "POST"]
+}});
 mongoose.connect(process.env.DB_STRING, options);
 
 mongoose.connection.on('connected', function () {
@@ -38,19 +42,14 @@ process.on('SIGINT', function() {
 
 
   //middlewares
+io.on('connection', (socket) => {console.log('a user connected'); });
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-
-
-
-  app.listen(3000, () => console.log('Server is up'));
 app.use('/api',require('./api/router'));  
-/* userService.emailExists('alaa').then(function (result) {
-   console.log(result);
-return result;   
- },function (result) {
-  console.log(result);
-  console.log('non')
-return result;  } )*/
+
+
+  server.listen(3000, () => console.log('Server is up'));
+
+
   

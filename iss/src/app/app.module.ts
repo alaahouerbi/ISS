@@ -5,13 +5,20 @@ import { AppComponent } from './app.component';
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardModule } from "./dashboard/dashboard.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,FormsModule,ReactiveFormsModule,RouterModule.forRoot([]), AuthModule,HttpClientModule
+    DashboardModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([]),
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
 

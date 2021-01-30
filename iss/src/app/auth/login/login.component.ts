@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authService.getCurrentUser) {
-      this.router.navigate(['/register']);
+      this.router.navigate(['/home']);
     }
   }
   // convenience getter for easy access to form fields
