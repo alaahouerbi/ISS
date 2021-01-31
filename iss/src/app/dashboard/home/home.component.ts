@@ -12,6 +12,11 @@ export class HomeComponent implements OnInit {
   constructor(private chatService:ChatService) { }
 
   ngOnInit(): void {
+    this.chatService.getMessagesOnInit().subscribe((message:string)=>{
+      this.messages.push(message)
+    });
+    console.log(this.messages[0]);
+
     this.chatService
     .getMessages()
     .subscribe((message: string) => {
