@@ -7,10 +7,21 @@ import { ChatService } from "../../shared/services/chat.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(chatService:ChatService) { }
+  message: string;
+  messages: string[] = [];
+  constructor(private chatService:ChatService) { }
 
   ngOnInit(): void {
+    this.chatService
+    .getMessages()
+    .subscribe((message: string) => {
+      this.messages.push(message);
+    });
   }
+  sendMessage() {
 
+    this.chatService.sendMessage(this.message);
+    this.messages.push(this.message);
+    this.message = '';
+  }
 }

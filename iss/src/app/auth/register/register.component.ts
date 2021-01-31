@@ -20,8 +20,14 @@ export class RegisterComponent implements OnInit {
   ) {}
   get f() {
     return this.registerForm.controls;
-  }
+  }// redirect to home if already logged in
+
   ngOnInit(): void {
+    if (this.authService.getCurrentUser) {
+      console.log(this.authService.getCurrentUser);
+
+      this.router.navigate(['/home']);
+    }
     this.registerForm = this.formBuilder.group({
       email : '',
       password : '',
@@ -30,15 +36,12 @@ export class RegisterComponent implements OnInit {
     });
   }
   onSubmit(){
-   /* this.userModel.email=this.f.email.value;
-    this.userModel.password=this.f.password.value;
-    this.userModel.firstName=this.f.firstName.value;
-    this.userModel.lastName=this.f.lastName.value;*/
+
     this.authService.register(this.registerForm.value).pipe(first())
     .subscribe(
         data => {
 
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
         },
         error => {
           console.log(error);
