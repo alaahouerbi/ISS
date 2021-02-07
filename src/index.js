@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
-
+const MesssageService=require('./services/messageService')();
 const app = express();
 const server = require('http').createServer(app);
 dotenv.config();
@@ -48,6 +48,7 @@ io.on('connection', (socket) => {
   console.log('a user connected');
   socket.on('new-message', (message) => {
     io.emit(message);
+    MesssageService.addMessage(message);
   });
 });
 app.use(cors());

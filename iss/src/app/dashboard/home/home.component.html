@@ -1,6 +1,8 @@
+<ng-container *ngIf="messages">
 <div *ngFor="let message of messages">
-  {{message}}
+  {{message?.text}}
 </div>
-<input [(ngModel)]="message" />
+<input [(ngModel)]="message.text" />
 <button (click)="sendMessage()">Send</button>
+</ng-container>
 <router-outlet></router-outlet>

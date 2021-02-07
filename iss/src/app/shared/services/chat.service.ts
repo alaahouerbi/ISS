@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {io} from 'socket.io-client';
 import { HttpClient, HttpParams } from "@angular/common/http";
+import {Message} from '../models/message.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,13 +22,13 @@ export class ChatService {
   once to the DB and once to connected sockets
   will fix it tommorow
   */
-  public sendMessage(message){
+  public sendMessage(message:Message){
     this.socket.emit('new-message',message);
       this.postMessage(message);
 
   }
-  private postMessage(message){
-    this.httpClient.post(this.url+'/api/messages/addMessage',{text:message})
+  private postMessage(message:Message){
+    this.httpClient.post(this.url+'/api/messages/addMessage',{message})
   }
   public getMessagesOnInit= ()=>{
     return this.httpClient.get(this.url+'/api/messages/getMessages');
