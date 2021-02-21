@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { from, Observable,BehaviorSubject } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
 import { ChatService } from "../../shared/services/chat.service";
 import {AuthService} from '../../shared/services/auth.service';
 import {Message} from '../../shared/models/message.model';
@@ -9,28 +10,39 @@ import {Message} from '../../shared/models/message.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  message: Message;
-  messages: Message[] = [];
-  constructor(private chatService:ChatService,private authService:AuthService) { }
+
+  Messages:Observable<any>;
+  messages:any[]=[];
+
+  messageFrom=this.formBuilder.group({
+    text:'',_id: this.authService.getCurrentUser._id
+  })
+  constructor(private chatService:ChatService,private authService:AuthService,private formBuilder: FormBuilder) {   }
 
   ngOnInit(): void {
-   this.chatService.getMessagesOnInit().subscribe((message: Message) => {
-      this.messages.push(message);
-    });
+    this.chatService.getMessagesOnInit().subsribe(messagesArray=>{
+    })
+  this.chatService.getMessages()
+  .subscribe((message:any)=>{
+    console.log(message);
+    this.messages.push(message);
+
+  })
+
+  }
+  onSubmit(){
+
+    this.messageFrom.controls['_id'].setValue(this.authService.getCurrentUser._id);
+
+    let tosend={}as Message;
+    tosend.text=this.messageFrom.controls['text'].value;
+    tosend.sentAt=new Date();
+    tosend.sender=this.authService.getCurrentUser._id;
+
+    this.chatService.sendMessage(tosend);
+    this.messageFrom.reset({text:'',id:''});
     console.log(this.messages);
 
-    this.chatService
-    .getMessages()
-    .subscribe((message: Message) => {
-      this.messages.push(message);
-    });
   }
-  sendMessage() {
-    this.message.sender=this.authService.getCurrentUser._id;
-    this.chatService.sendMessage(this.message);
-    this.messages.push(this.message);
-    this.message.text='';
-    this.message.sender='';
 
-  }
 }

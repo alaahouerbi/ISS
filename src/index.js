@@ -46,9 +46,11 @@ process.on('SIGINT', function () {
 //middlewares
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.on('new-message', (message) => {
-    io.emit(message);
-    MesssageService.addMessage(message);
+  socket.on('new-message', async (message) => {
+    await MesssageService.addMessage(message);
+    io.emit('new-message',message);
+   
+   
   });
 });
 app.use(cors());

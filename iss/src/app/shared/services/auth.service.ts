@@ -22,7 +22,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
   }
   login(credentials:any):Observable<User>{
-    return this.httpClient.post(endpoint+"login",credentials).pipe(map(
+    return this.httpClient.post('http://localhost:3000/api/user/login',credentials).pipe(map(
       (res: any) => {
         this.setAuth(res);
         return res;
@@ -54,6 +54,10 @@ export class AuthService {
   register(user:User){
     return this.httpClient.post(endpoint+"register",user);
   }
+   getCurrentUserObs(): Observable<User> {
+    return this.currentUser;
+  }
+
   getUserPayload() {
     if (this.jwtService.getToken()) {
       this.getUser().subscribe({

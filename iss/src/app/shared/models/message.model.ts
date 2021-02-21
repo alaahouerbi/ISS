@@ -1,5 +1,6 @@
 export interface Message{
   text:String,
-  sender:String,
-  sentAt:Date
+  _id?:String,
+  sentAt?:Date,
+  sender?:string
 }

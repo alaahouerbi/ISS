@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatService } from "../shared/services/chat.service";
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 const routes: Routes = [{
   path: 'home',
   component:HomeComponent
@@ -11,7 +12,7 @@ const routes: Routes = [{
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, RouterModule.forChild(routes),FormsModule],
+  imports: [CommonModule, RouterModule.forChild(routes),FormsModule,ReactiveFormsModule],
   exports: [
     RouterModule
   ]
