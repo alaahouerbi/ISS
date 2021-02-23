@@ -23,10 +23,10 @@ export class RegisterComponent implements OnInit {
   }// redirect to home if already logged in
 
   ngOnInit(): void {
-    if (this.authService.getCurrentUser) {
-      console.log(this.authService.getCurrentUser);
+    if (this.authService.getUser()) {
+      console.log(this.authService.getUser());
 
-      this.router.navigate(['/home']);
+
     }
     this.registerForm = this.formBuilder.group({
       email : '',

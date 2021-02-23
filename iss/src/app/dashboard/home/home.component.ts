@@ -15,13 +15,12 @@ export class HomeComponent implements OnInit {
   messages:any[]=[];
 
   messageFrom=this.formBuilder.group({
-    text:'',_id: this.authService.getCurrentUser._id
+    text:'',_id: this.authService.getUser()._id
   })
   constructor(private chatService:ChatService,private authService:AuthService,private formBuilder: FormBuilder) {   }
 
   ngOnInit(): void {
-    this.chatService.getMessagesOnInit().subsribe(messagesArray=>{
-    })
+
   this.chatService.getMessages()
   .subscribe((message:any)=>{
     console.log(message);
@@ -32,17 +31,20 @@ export class HomeComponent implements OnInit {
   }
   onSubmit(){
 
-    this.messageFrom.controls['_id'].setValue(this.authService.getCurrentUser._id);
+
 
     let tosend={}as Message;
     tosend.text=this.messageFrom.controls['text'].value;
     tosend.sentAt=new Date();
-    tosend.sender=this.authService.getCurrentUser._id;
+    tosend.sender=this.authService.getUser().id;
 
     this.chatService.sendMessage(tosend);
     this.messageFrom.reset({text:'',id:''});
     console.log(this.messages);
 
+  }
+  logOut(){
+    this.authService.logout();
   }
 
 }

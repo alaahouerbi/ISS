@@ -4,6 +4,7 @@ import {io} from 'socket.io-client';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import {Message} from '../models/message.model';
 import { distinctUntilChanged,map } from 'rxjs/operators';
+import { AuthService } from "./auth.service";
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +26,7 @@ export class ChatService {
   private messageArray:BehaviorSubject<Message[]>;
   public messageArrayObservable:Observable<any>;
 
-  constructor( private httpClient: HttpClient ) {
+  constructor( private httpClient: HttpClient,private authService:AuthService ) {
     this.socket = io(this.url);
     this.messageArray=new BehaviorSubject<Message[]>([]);
 
@@ -33,6 +34,10 @@ export class ChatService {
   }
 
   public sendMessage(message:Message){
+    this.authService.getUser().subscribe(data=>message.sender=data.id
+    )
+
+
 
     this.socket.emit('new-message',message);
 

@@ -23,8 +23,10 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     // redirect to home if already logged in
-    if (this.authService.getCurrentUser) {
-      this.router.navigate(['/home']);
+    if (this.authService.userValue) {
+      console.log(this.authService.userValue);
+
+     // this.router.navigate(['/home']);
     }
   }
   // convenience getter for easy access to form fields
@@ -41,7 +43,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userModel.email =this.f.email.value;
     this.userModel.password=this.f.password.value;
-    this.authService.login(this.userModel).pipe(first())
+
+   this.authService.login('test4','123456').subscribe(res=>{console.log(res);
+   })
+
+    this.authService.login(this.userModel.email,this.userModel.password).pipe(first())
     .subscribe(
         data => {
             this.router.navigate([this.returnUrl]);
