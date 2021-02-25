@@ -6,5 +6,7 @@ iss/e2e/
 
 src/.env
 
+*.uxf
 
+*.png
 
