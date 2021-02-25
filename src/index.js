@@ -1,4 +1,5 @@
-
+const port=process.env.PORT || 3000
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -6,7 +7,7 @@ const cors = require("cors");
 const MesssageService=require('./services/messageService')();
 const app = express();
 const server = require('http').createServer(app);
-dotenv.config();
+
 
 // Connect to DB
 const options = {
@@ -59,4 +60,4 @@ app.use(morgan("dev"));
 app.use('/api', require('./api/router'));
 
 
-server.listen(3000, () => console.log('Server is up'));
+server.listen(port, () => console.log(`Server is up running on${port}`));

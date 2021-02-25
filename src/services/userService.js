@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const User = require("../models/user");
 const jwt=require('jsonwebtoken')
-require("dotenv").config();
+
 
 function userService() {
     /** adds a user to the database */
