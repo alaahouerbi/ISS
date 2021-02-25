@@ -21,6 +21,6 @@
   "devDependencies": {
     "cors": "^2.8.5",
     "mocha": "^8.2.1",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.2.0"
   }
 }
