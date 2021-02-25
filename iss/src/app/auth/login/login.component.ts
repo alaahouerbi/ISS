@@ -44,8 +44,7 @@ export class LoginComponent implements OnInit {
     this.userModel.email =this.f.email.value;
     this.userModel.password=this.f.password.value;
 
-   this.authService.login('test4','123456').subscribe(res=>{console.log(res);
-   })
+
 
     this.authService.login(this.userModel.email,this.userModel.password).pipe(first())
     .subscribe(

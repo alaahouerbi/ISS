@@ -3,10 +3,10 @@ import {User} from '../models/user.model';
 import { Observable, BehaviorSubject } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { map, distinctUntilChanged,tap} from 'rxjs/operators';
-
+import { environment } from '@env';
 import { Router } from '@angular/router';
 
-const endpoint='http://localhost:3000/api/user/';
+const endpoint=`${environment.apiUrl}/api/user`;
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +26,7 @@ export class AuthService {
     }
 
   login(email:string, password:string):Observable<User> {
-   return this.httpClient.post<any>('http://localhost:3000/api/user/login',{email,password}).pipe(
+   return this.httpClient.post<any>(`${endpoint}/login`,{email,password}).pipe(
    map(res => {
     localStorage.setItem('user',JSON.stringify(res));
     this.userSubject.next(res);
@@ -50,7 +50,7 @@ logout() {
     return JSON.parse(token);
   }
   register(user:User){
-    return this.httpClient.post(endpoint+"register",user);
+    return this.httpClient.post(endpoint+"/register",user);
   }
 
 }

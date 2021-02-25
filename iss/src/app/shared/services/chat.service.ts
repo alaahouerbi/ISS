@@ -5,23 +5,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import {Message} from '../models/message.model';
 import { distinctUntilChanged,map } from 'rxjs/operators';
 import { AuthService } from "./auth.service";
+import { environment } from '@env';
 @Injectable({
   providedIn: 'root'
 })
-/*MessageArray:BehaviourSubject<Messages>
 
-fel contrusctor ta3 el chat service
-assign lel behaviour subject el chesmou
-un truc du genre constructor
-this.MessageArray.next(this.getMessagesOnInit().AsValue)//AsValue since getMessagesOnInit returns an Observable
-ba3ed fel sendMessage this.MessageArray.next(this.MessageArray.value().push(message)
-getMessages(this.socket.on('new Message',message=>{
-this.MessageArray.next(this.MessageArray.value.push(message));
-*/
-//switch into replaySubject its exactly what i need
-//would need some changes
 export class ChatService {
-  private url = 'http://localhost:3000';
+  private url = environment.apiUrl;
   private socket;
   private messageArray:BehaviorSubject<Message[]>;
   public messageArrayObservable:Observable<any>;
