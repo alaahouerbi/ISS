@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon index.js"
+    "start": "nodemon --require dotenv/config index.js"
   },
   "author": "",
   "license": "ISC",
