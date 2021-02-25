@@ -16,14 +16,18 @@ function userService() {
       const result=await  bcrypt.compare(userInput.password, user.password)
             if(!result) throw new Error("invalid password")
             const token = jwt.sign({
-                    userId: user._id
+                    userId: user._id,
+                    email:user.email
                 },
                 process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXP
                 });
                 userObj = {
                     email: user.email,
-                    token
+                    token,
+                    id:user._id,
+                    password:'NaN'
+                
                   };
                 return userObj;
             
