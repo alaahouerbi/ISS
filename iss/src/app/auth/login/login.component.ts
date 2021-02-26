@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if (this.authService.userValue) {
       console.log(this.authService.userValue);
 
-     // this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     }
   }
   // convenience getter for easy access to form fields
@@ -43,9 +43,6 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userModel.email =this.f.email.value;
     this.userModel.password=this.f.password.value;
-
-
-
     this.authService.login(this.userModel.email,this.userModel.password).pipe(first())
     .subscribe(
         data => {

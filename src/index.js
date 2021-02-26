@@ -50,9 +50,10 @@ io.on('connection', (socket) => {
   socket.on('new-message', async (message) => {
     await MesssageService.addMessage(message);
     io.emit('new-message',message);
-   
+  
    
   });
+   socket.on('disconnect',()=>{console.log("a user disconnected")})
 });
 app.use(cors());
 app.use(express.json());
