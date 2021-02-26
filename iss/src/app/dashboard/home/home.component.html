@@ -1,15 +1,23 @@
+<div class="container">
 
-<div *ngFor="let m of messages">
- {{m.text}}
+
+
+<div *ngFor="let m of messages" class="containerChat">
+
+ <p> {{m.text}}</p>
+  <span class="time-right">{{m.sentAt | date :"short"}}</span>
 </div>
+
 
 <form [formGroup]="messageFrom" (ngSubmit)="onSubmit()">
   <div>
 
-    <input id="text" type="text" formControlName="text">
+    <input id="text" type="text" formControlName="text" class="form-control">
   </div>
   <button class="button" type="submit">send</button>
 
 </form>
 <router-outlet></router-outlet>
 <button class="button" (click)="logOut()">logout</button>
+
+</div>
