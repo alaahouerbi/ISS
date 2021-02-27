@@ -1,23 +1,32 @@
-
+<div id="backgroundImg">
+<div id="wrapper">
 <div class="formcontainer">
 
 
   <div class="container">
-    <h1>Login Form</h1>
+    <h1 id="signUp">Sign in </h1><br>
+    <h3 id="ifYouHave">if you have any problems logging  in<br><span class="margin"> feel free to <a href="">Contact The Support</a></span></h3>
     <hr/>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="email">email</label>
-    <input type="text" formControlName="email" class="form-control">
+
+    <input type="text" formControlName="email" class="form-control" placeholder="Email" required>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" formControlName="password" class="form-control">
+
+    <input type="password" formControlName="password" class="form-control" placeholder="password" required>
   </div>
-  <div class="form-group"> <button type="submit"> Login</button></div>
+  <input type="checkbox"><span id="keepMeLoggedIn"> keep me logged in</span>
+<button type="submit"> Login</button>
+
 </form>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button id="register" type="button"  (click)="register()">Sign up Instead</button>
 </div>
 
 
-<app-register></app-register>
+
+</div>
+</div>
 </div>

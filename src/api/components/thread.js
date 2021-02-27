@@ -15,5 +15,10 @@ router.post('/addThread',verifyToken,async(req,res)=>{
     const result=await threadService.postThread({title:req.body.title});
     res.send(result);
 })
+router.post('/postInThread/:ThreadId',verifyToken,async(req,res)=>{
+    req.body.poster=req.decodedToken.userId;
+    const result =await threadService.postInThread(req.params.ThreadId,req.body);
+    res.send(result);
+})
 
 module.exports=router;
