@@ -1,0 +1,45 @@
+#wrapper {
+  float: right;
+  margin-right: 100px;
+  margin-top: 100px;
+}
+.formcontainer {
+  text-align: left;
+  margin: 24px 50px 12px;
+}
+.container {
+  width: 600px;
+  height: 600px;
+  padding: 50px 50px;
+  text-align: left;
+  margin: 0 auto;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 16px 8px;
+
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+#backgroundImg {
+  height: 1000px;
+  background-size: cover;
+  width: auto;
+  background-image: url("../../../assets/background(1).jpg");
+}
+button {
+  background-color: #3f90f9;
+  color: white;
+  padding: 14px 0;
+  margin: 10px 0;
+  border: none;
+  float: right;
+  width: 40%;
+}
+#tos{
+  font-style: italic;
+
+}
