@@ -33,7 +33,7 @@ export class ChatService {
 
   }
 
-  private getMessagesOnInit(){
+  public getMessagesOnInit(){
     return this.httpClient.get(this.url+'/api/messages/getMessages');
   }
   public getMessages = () => {

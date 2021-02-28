@@ -4,7 +4,7 @@
 
 <div *ngFor="let m of messages" class="containerChat">
 
- <p> {{m.text}}</p>
+ <p [ngStyle]="{'color': m.sender == this.authService.getUser().id ? 'red' : 'green' }"> {{m.text}}</p>
   <span class="time-right">{{m.sentAt | date :"short"}}</span>
 </div>
 

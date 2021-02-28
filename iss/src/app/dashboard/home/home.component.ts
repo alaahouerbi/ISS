@@ -24,6 +24,14 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.chatService.getMessagesOnInit().subscribe((data:any[])=>{
+      data.reverse();
+      data.forEach(element => {
+        this.messages.push(element);
+
+      });
+
+    })
     this.chatService.getMessages().subscribe((message: any) => {
       console.log(message);
       this.messages.push(message);
@@ -38,8 +46,14 @@ export class HomeComponent implements OnInit {
     this.chatService.sendMessage(tosend);
     this.messageFrom.reset({ text: '', id: '' });
     console.log(this.messages);
+    this.keepArrayLength()
   }
   logOut() {
     this.authService.logout();
+  }
+
+  private keepArrayLength(){
+    if(this.messages.length>10)
+      this.messages.shift();
   }
 }
