@@ -1,0 +1,11 @@
+.custom-card {
+  width: 60%;
+  height: 216px;
+  border: 15px ridge rgb(84, 139, 212);
+  padding:20px;
+
+}
+.row {
+  margin: 15;
+
+}

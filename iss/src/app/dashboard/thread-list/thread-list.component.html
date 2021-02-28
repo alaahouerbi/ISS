@@ -1,0 +1,8 @@
+<div *ngFor="let t of listOfThreads|async" class="mx-auto">
+<div class="card  custom-card  text-center shadow-sm mb-3 mx-auto">
+  <div class="row h-100 align-items-center"><div (click)="viewThread(t._id)">{{t._id}}</div></div>
+  <div class="row h-100 align-items-center"><dt>{{t.title}}</dt></div>
+  <div class="center">{{t.posts.length}}</div>
+
+</div>
+</div>

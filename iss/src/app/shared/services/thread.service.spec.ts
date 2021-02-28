@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JwtService } from './jwt.service';
+import { ThreadService } from './thread.service';
 
-describe('JwtService', () => {
-  let service: JwtService;
+describe('ThreadService', () => {
+  let service: ThreadService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(JwtService);
+    service = TestBed.inject(ThreadService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+
 });
