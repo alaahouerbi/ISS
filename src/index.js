@@ -17,7 +17,8 @@ const options = {
 }
 const io = require('socket.io')(server, {
   cors: {
-    origin: "http://localhost:4200",
+    //not sure about this
+    origin: process.env.NODE_ENV==='production'? process.env.apiUrl : process.env.apiUrlDev ,
     methods: ["GET", "POST"]
   }
 });

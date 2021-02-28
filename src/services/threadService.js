@@ -10,7 +10,8 @@ function threadService(){
     }
 
     async function getThreadPosts(threadObjectID){
-        return thread.Thread.findById(threadObjectID).posts;
+        const result=await thread.Thread.findById(threadObjectID);
+        return result.posts;
     }
 
     async function postInThread(threadObjectID,post){

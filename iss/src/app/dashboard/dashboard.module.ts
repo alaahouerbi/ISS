@@ -11,12 +11,13 @@ import { ThreadComponent } from './thread/thread.component';
 
 const routes: Routes = [{
   path: 'home',
-  component:HomeComponent},{
+  component:HomeComponent
+  },{
   path:'forum',
   component:ThreadListComponent
 },
 {
-  path:'thread/:threadId',
+  path:'forum/thread/:threadId',
   component:ThreadComponent
 }];
 
