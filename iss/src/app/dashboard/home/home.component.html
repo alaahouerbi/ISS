@@ -6,10 +6,11 @@
     <div
       *ngFor="let m of messages"
       class="containerChat"
-      [ngStyle]="{ 'background-color': this.isMeOrSomeElse(m) === 'a' ? 'white':'#151955' }">
+      [ngClass]="{'myMessage':this.isMeOrSomeElse(m)==='m','otherMessage':this.isMeOrSomeElse(m)==='s'}"
+      >
       <p
         [ngStyle]="{
-          'color': m.sender == this.authService.getUser().id ? '#262627' : 'white'
+          'color': m.sender == this.authService.userValue.id ? 'white' : '#262627'
         }"
       >
         {{ m.text }}
@@ -23,7 +24,7 @@
           id="text"
           type="text"
           formControlName="text"
-          class="form-control border"
+          class="form-control border enterMess"
         />
       </div>
       <button class="button" type="submit">send</button>

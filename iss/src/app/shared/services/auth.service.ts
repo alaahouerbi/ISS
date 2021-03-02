@@ -27,6 +27,8 @@ export class AuthService {
       .post<any>(`${endpoint}/login`, { email, password })
       .pipe(
         map((res) => {
+
+
           localStorage.setItem('user', JSON.stringify(res));
           this.userSubject.next(res);
           return res;

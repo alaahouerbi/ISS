@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     let tosend = {} as Message;
     tosend.text = this.messageFrom.controls['text'].value;
     tosend.sentAt = new Date();
-    tosend.sender = this.authService.getUser().id;
+    tosend.sender = this.authService.userValue.id;
 
     this.chatService.sendMessage(tosend);
     this.messageFrom.reset({ text: '', id: '' });
@@ -55,10 +55,14 @@ export class HomeComponent implements OnInit {
       this.messages.shift();
   }
    isMeOrSomeElse(m:Message):string{
-    if(!m.sender) return 'a' //a for anon
-    if(m.sender===this.authService.userValue._id)
+     console.log(this.authService.userValue);
+
+
+    if(m.sender===this.authService.userValue.id)
         return 'm'; //m for me
-    return 's'; //s for someoneElse
+    else{
+      return 's';
+      } //s for someoneElse
     //should make this an enum probably
   }
   getStyles(m:Message):string{

@@ -4,18 +4,30 @@
 }
 .containerChat {
   border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
+
+  border-radius: 30px;
+  padding: 20px;
   margin: 10px 0;
   padding-bottom: 20px;
+  width:auto;
+  min-width: 75%;
+  display: inline-block;
+  box-shadow: 10px 10px 5px rgb(206, 205, 205);
 }
 #wrapperBack{
   height: 1000px;
 
   background-image: url("../../../assets/backgroundMessageScreen.png");
 }
-.border{
-  border:15px solid black;
 
+.myMessage{
+  float:right;
+  background-color:#151955;
+}
+.otherMessage{
+  float:left;
+  background-color: #aaa;
+}
+.enterMess{
+  border-radius: 15px;
 }
