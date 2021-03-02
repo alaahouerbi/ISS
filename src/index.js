@@ -18,7 +18,7 @@ const options = {
 const io = require('socket.io')(server, {
   cors: {
     //not sure about this
-    origin: process.env.NODE_ENV==='production'? process.env.apiUrl : process.env.apiUrlDev ,
+    origin: '*' ,
     methods: ["GET", "POST"]
   }
 });
