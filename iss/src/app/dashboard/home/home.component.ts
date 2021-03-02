@@ -48,12 +48,24 @@ export class HomeComponent implements OnInit {
     console.log(this.messages);
     this.keepArrayLength()
   }
-  logOut() {
-    this.authService.logout();
-  }
+
 
   private keepArrayLength(){
     if(this.messages.length>10)
       this.messages.shift();
+  }
+   isMeOrSomeElse(m:Message):string{
+    if(!m.sender) return 'a' //a for anon
+    if(m.sender===this.authService.userValue._id)
+        return 'm'; //m for me
+    return 's'; //s for someoneElse
+    //should make this an enum probably
+  }
+  getStyles(m:Message):string{
+    let x=this.isMeOrSomeElse(m);
+    let s="{\'background-color\':\'#abfeab\'}";
+    if(x=='m')
+      s="{\'background-color\':\'#defeab\'}"
+    return s;
   }
 }

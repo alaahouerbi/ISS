@@ -1,24 +1,34 @@
-<div class="container">
+<div id="wrapperBack">
+  <div
+    class="container shadow-lg p-3 mb-5 bg-white rounded"
+    [ngStyle]="{ 'background-color': '#ffffff' }"
+  >
+    <div
+      *ngFor="let m of messages"
+      class="containerChat"
+      [ngStyle]="{ 'background-color': this.isMeOrSomeElse(m) === 'a' ? 'white':'#151955' }">
+      <p
+        [ngStyle]="{
+          'color': m.sender == this.authService.getUser().id ? '#262627' : 'white'
+        }"
+      >
+        {{ m.text }}
+      </p>
+      <span class="time-right">{{ m.sentAt | date: "short" }}</span>
+    </div>
 
-
-
-<div *ngFor="let m of messages" class="containerChat">
-
- <p [ngStyle]="{'color': m.sender == this.authService.getUser().id ? 'red' : 'green' }"> {{m.text}}</p>
-  <span class="time-right">{{m.sentAt | date :"short"}}</span>
-</div>
-
-
-<form [formGroup]="messageFrom" (ngSubmit)="onSubmit()">
-  <div>
-
-    <input id="text" type="text" formControlName="text" class="form-control">
+    <form [formGroup]="messageFrom" (ngSubmit)="onSubmit()">
+      <div>
+        <input
+          id="text"
+          type="text"
+          formControlName="text"
+          class="form-control border"
+        />
+      </div>
+      <button class="button" type="submit">send</button>
+    </form>
+    <router-outlet></router-outlet>
   </div>
-  <button class="button" type="submit">send</button>
-
-</form>
-<router-outlet></router-outlet>
-<button class="button" (click)="logOut()">logout</button>
-
+  <a [routerLink]="['/forum']"> forum here please </a>
 </div>
-<a [routerLink]="['/forum']"> forum here please </a>

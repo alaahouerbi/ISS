@@ -8,10 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { JwtInterceptor } from "./shared/helpers/jwt.interceptor";
 import { AppRoutingModule } from '../app-routing/app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     DashboardModule,

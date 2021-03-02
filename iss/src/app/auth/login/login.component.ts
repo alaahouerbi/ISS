@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     // redirect to home if already logged in
-    if (JSON.stringify(this.authService.userValue)!=='{}') {
+    if (JSON.stringify(this.authService.userValue)!=='{}'&&(JSON.stringify(this.authService.userValue)!=='null')) {
       console.log(JSON.stringify(this.authService.userValue));
 
       console.log(this.authService.userValue);
