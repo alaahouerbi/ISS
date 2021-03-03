@@ -16,6 +16,6 @@ export class ThreadService {
     return this.httpClient.get(`${this.url}/api/forum/getThreads`);
   }
   public postInThread(threadId:string,post:Post){
-    return this.httpClient.post(`${this.url}/api/forum/postInThread/`,{post});
+    return this.httpClient.post(`${this.url}/api/forum/postInThread/${threadId}`,post);
   }
 }
