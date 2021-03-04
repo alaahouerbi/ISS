@@ -18,6 +18,7 @@ function threadService(){
         const x=await thread.Thread.findById(threadObjectID);
         x.posts.push(post);
         x.save();
+        return x;
     }
     return {
         getThreads,

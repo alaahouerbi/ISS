@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       this.messages.shift();
   }
    isMeOrSomeElse(m:Message):string{
-     console.log(this.authService.userValue);
+
 
 
     if(m.sender===this.authService.userValue.id)

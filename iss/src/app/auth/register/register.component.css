@@ -28,6 +28,10 @@ input[type="password"] {
   height: 1000px;
   background-size: cover;
   width: auto;
+  background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
   background-image: url("../../../assets/background(1).jpg");
 }
 button {

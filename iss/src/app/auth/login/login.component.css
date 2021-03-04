@@ -19,8 +19,13 @@ html{
     text-shadow: 0px 1px, 1px 0px, 1px 1px;
   }
   #backgroundImg{
-    height: 1000px;; background-size:cover; width:auto;
+    height: 1000px;
+    width:100%;
     background-image: url("../../../assets/background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
   }
   #keepMeLoggedIn{
     color:rgb(129, 125, 125);
@@ -78,8 +83,8 @@ html{
 
   }
   .container {
-    width: 600px;
-    height: 600px;
+    width: 80%;
+    height: 80%;
   padding: 50px 0;
   text-align:left;
   margin: 0 auto;

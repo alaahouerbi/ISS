@@ -16,7 +16,11 @@
 }
 #wrapperBack{
   height: 1000px;
-
+  width: auto;
+  background-position: center center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
   background-image: url("../../../assets/backgroundMessageScreen.png");
 }
 

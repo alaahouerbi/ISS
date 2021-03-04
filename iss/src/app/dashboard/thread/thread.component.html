@@ -1,4 +1,11 @@
 <div *ngFor="let p of listOfPosts|async">
 
-<div class="card">{{p.text}}</div>
+<div class="card"><div class="card-body">{{p.text}}</div></div>
 </div>
+<form (ngSubmit)="onSubmit()">
+<div class="form-group">
+  <label for="exampleFormControlTextarea1">Post a reply</label>
+  <textarea class="form-control" [formControl]="formReply" rows="3"></textarea>
+</div>
+<button type="submit"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></button>
+</form>

@@ -38,3 +38,4 @@ const userSchema= mongoose.Schema({
       }
 })
 module.exports = mongoose.model("User", userSchema);
+//TODO: Fix design on normal screens 12xx * 1xxx

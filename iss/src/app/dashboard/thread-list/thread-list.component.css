@@ -3,7 +3,8 @@
   height: 216px;
   border: 15px ridge rgb(84, 139, 212);
   padding:20px;
-
+  margin:15px;
+  display: inline-block;
 }
 .row {
   margin: 15;
